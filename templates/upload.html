@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Detection in Autonomous vehicle</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://via.placeholder.com'); /* Remove specific dimensions */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            max-width: 500px;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+            font-size: 36px; /* Larger font size */
+        }
+
+        .upload-btn {
+            border: none;
+            background-color: #ff6f61; /* Coral color */
+            color: white;
+            padding: 15px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 24px; /* Larger font size */
+            margin-top: 20px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .upload-btn:hover {
+            background-color: #ed5249; /* Darker shade of coral */
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .upload-icon {
+            margin-right: 10px;
+        }
+
+        .file-input-label {
+            display: inline-block;
+            background-color: #ff6f61; /* Coral color */
+            color: white;
+            padding: 15px 30px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .file-input-label:hover {
+            background-color: #ed5249; /* Darker shade of coral */
+        }
+
+        .uploaded-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Object Detection in Autonomous vehicle</h1>
+        <img id="preview-image" class="uploaded-image" src="#" alt="Uploaded Image" style="display: none;">
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <label for="file" class="file-input-label">
+                <i class="fas fa-car upload-icon"></i> Choose Image
+            </label>
+            <input type="file" id="file" name="file" accept="image/*" onchange="previewImage(event)" required>
+            <button type="submit" class="upload-btn">Detect Objects</button>
+        </form>
+    </div>
+
+    <script>
+        function previewImage(event) {
+            const preview = document.getElementById('preview-image');
+            preview.src = URL.createObjectURL(event.target.files[0]);
+            preview.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
